@@ -27,8 +27,8 @@ def get_funk():
         # time.sleep(random.randrange(2, 4))
         driver.implicitly_wait(5)
 
-        for cookie in pickle.load(open('session', 'rb')):
-                driver.add_cookie('YUOR_COOKIE)
+        for cookie in pickle.load(open('YUOR_FILE_WITH_COOKIE', 'rb')):
+                driver.add_cookie(cookie)
         driver.get(url)
         print(driver.window_handles)
         # time.sleep(random.randrange(2, 5))
