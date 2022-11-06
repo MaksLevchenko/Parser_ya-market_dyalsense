@@ -5,7 +5,7 @@ from parser_ya import get_funk
 from aiogram.utils.markdown import hlink, hbold
 
 
-bot = Bot(token='5629539803:AAHSbyw2rVg9L2Noq4wBIElEZ3Ua7f-TvI8', parse_mode=types.ParseMode.HTML)
+bot = Bot(token='YUORE_TOKEN', parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
