@@ -3,17 +3,17 @@ from selenium import webdriver
 import pickle
 import time
 import random
+from fake_useragent import UserAgent
 from selenium.webdriver.common.by import By
 
 def get_funk():
 
+    ua = UserAgent()
+
     url = 'https://market.yandex.ru/catalog--ruli-dzhoistiki-geimpady/26908330/list?srnum=672&was_redir=1&rt=9&rs=eJwzEglgrGLheHucdRYjZ0ppYk5xal5xKgBJFwc_&text=dualsense&hid=91117&allowCollapsing=1&local-offers-first=0&pricefrom=3500&priceto=7200&glfilter=7893318%3A152955'
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36',
-        'Accept': '*/*'
-    }
+
     options = webdriver.ChromeOptions()
-    options.add_argument('User-Agent= Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36')
+    options.add_argument(f'User-Agent= {ua.random}')
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.headless = True
 
@@ -31,7 +31,8 @@ def get_funk():
                 driver.add_cookie(cookie)
         driver.get(url)
         print(driver.window_handles)
-        # time.sleep(random.randrange(2, 5))
+        # driver.find_element(By.XPATH, "//div[@data-zone-name='continueWeb']").click()
+        # time.sleep(random.randrange(100, 155))
         driver.implicitly_wait(5)
 
         result_data = []
